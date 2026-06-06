@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="navbar">Expense Tracker</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Register</h2>
+
+        <div id="errorBox"></div>
+
+        <form action="register" method="post">
+            <input name="user" placeholder="Username" required>
+            <input name="pass" type="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+
+        <a href="login.html">
+            <button class="secondary">Back</button>
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+const p = new URLSearchParams(window.location.search);
+const box = document.getElementById("errorBox");
+
+if(p.get("error")=="weak"){
+    box.innerHTML = "<p class='error'>Password too weak (min 6 chars)</p>";
+}
+if(p.get("error")=="exists"){
+    box.innerHTML = "<p class='error'>Username already exists</p>";
+}
+</script>
+
+</body>
+</html>
